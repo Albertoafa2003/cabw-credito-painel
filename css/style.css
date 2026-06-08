@@ -239,9 +239,11 @@ body {
        the image so the text remains readable regardless of the
        underlying artwork.  The image itself is defined in the markup as
        a separate file in the images folder. */
-    /* Lighten the overlay to allow the background image to show through */
-    background: linear-gradient(rgba(5, 30, 68, 0.65), rgba(2, 18, 44, 0.65)),
-                url('../images/home-bg.png') center/cover no-repeat;
+    /* Use only a rich gradient for the hero background.  The image previously
+       used introduced unwanted interface artefacts; the gradient provides a
+       clean, adjustable backdrop. */
+    background: linear-gradient(rgba(5, 30, 68, 0.85), rgba(2, 18, 44, 0.85));
+    overflow: hidden;
     background-size: cover;
     background-position: center;
 }
@@ -263,6 +265,90 @@ body {
     color: var(--accent-color);
     font-size: 2rem;
     margin: 0 auto 1.5rem;
+}
+
+/* Ensure the hero content (title, subtitle and cards) sits above any
+   decorative background elements. */
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Decorative aircraft icons
+ *
+ * These icons are positioned absolutely within the hero section to evoke
+ * the presence of a Gripen fighter, a H‑60 helicopter and a KC‑390
+ * transport aircraft.  They use large Font Awesome glyphs with low
+ * opacity so they blend subtly into the background.  Interaction and
+ * selection are disabled to prevent interference with page layout. */
+.hero .aircraft-icon {
+    position: absolute;
+    opacity: 0.07;
+    color: #ffffff;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Position specific aircraft icons.  Adjust the font sizes and
+   positions to create balance across the hero area.  The values here
+   provide a good starting point on large screens; media queries below
+   will refine these for smaller viewports. */
+.hero .aircraft-gripen {
+    left: -10%;
+    top: 25%;
+    font-size: 18rem;
+    transform: rotate(-10deg);
+}
+
+.hero .aircraft-h60 {
+    left: 50%;
+    top: -5%;
+    font-size: 14rem;
+    transform: translateX(-50%) rotate(5deg);
+}
+
+.hero .aircraft-kc {
+    right: -10%;
+    top: 35%;
+    font-size: 20rem;
+    transform: rotate(8deg);
+}
+
+/* Responsive adjustments for aircraft icons
+ * Scale down the icons on medium and small screens so they don't
+ * overwhelm the content. */
+@media (max-width: 992px) {
+    .hero .aircraft-gripen {
+        font-size: 14rem;
+        top: 30%;
+        left: -15%;
+    }
+    .hero .aircraft-h60 {
+        font-size: 10rem;
+        top: -10%;
+    }
+    .hero .aircraft-kc {
+        font-size: 16rem;
+        top: 40%;
+        right: -20%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero .aircraft-gripen {
+        font-size: 10rem;
+        top: 40%;
+        left: -20%;
+    }
+    .hero .aircraft-h60 {
+        font-size: 8rem;
+        top: -15%;
+    }
+    .hero .aircraft-kc {
+        font-size: 12rem;
+        top: 45%;
+        right: -30%;
+    }
 }
 
 /* Size the main hero heading prominently and highlight the last word
