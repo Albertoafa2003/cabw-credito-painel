@@ -12,6 +12,23 @@
     --primary-bg-darker: #02122c;
     --accent-color: #EFC34A;
     --text-color: #ffffff;
+
+    /* Colours for the redesigned landing page */
+    /* Navigation colours */
+    --nav-bg: #01245b; /* Dark navy for the header bar */
+    --nav-link-color: #ffffff; /* White navigation text */
+    --nav-active-color: #fec730; /* Golden accent used for active state */
+    --page-bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --card-title-color: #01275b;
+    --card-desc-color: #565d77;
+    --button-bg: #01275b;
+    --button-text: #ffffff;
+    --button-icon-color: #fec730;
+    /* Hero gradient colours */
+    --hero-bg-start: #01245b;
+    --hero-bg-end: #001e3c;
+    --hero-overlay: rgba(0, 0, 0, 0.4);
 }
 
 /*
@@ -67,34 +84,39 @@ body {
  * accompany each navigation label and separators are drawn between menu
  * entries.  The active item receives a gold accent bar underneath.
  */
+/*
+ * Navigation bar
+ *
+ * The primary header is anchored by a dark navy bar.  Navigation
+ * links are white by default and highlighted with a golden underline
+ * when active or hovered.  Separators between items mirror the
+ * reference design, giving a sense of separation without clutter.
+ */
 .navbar {
-    background-color: var(--primary-bg) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    background-color: var(--nav-bg) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-height: 80px;
     position: relative;
-    /* Increase the height of the navigation bar so the logo fits comfortably */
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    min-height: 70px;
 }
 .navbar-brand {
-    color: var(--text-color) !important;
-    font-weight: 600;
+    color: var(--nav-link-color) !important;
+    font-weight: 700;
+    font-size: 1.25rem;
 }
 .navbar-nav .nav-link {
-    color: var(--text-color) !important;
+    color: var(--nav-link-color) !important;
     font-weight: 500;
     display: flex;
     align-items: center;
+    padding: 0.5rem 1rem;
     position: relative;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    transition: color 0.2s ease;
 }
 .navbar-nav .nav-link .nav-icon {
-    width: 20px;
-    height: 20px;
     margin-right: 0.4rem;
-    filter: brightness(1.2);
+    font-size: 1rem;
 }
 /* Vertical separators between navigation items */
 .navbar-nav .nav-item:not(:last-child) > .nav-link::before {
@@ -105,22 +127,22 @@ body {
     transform: translateY(-50%);
     width: 1px;
     height: 18px;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
-/* Highlight the active navigation item with a gold bar at the bottom */
+/* Active nav item underline */
 .navbar-nav .nav-item.active > .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -6px;
     left: 0;
     right: 0;
     height: 3px;
-    background-color: var(--accent-color);
+    background-color: var(--nav-active-color);
     border-radius: 2px;
 }
-/* Hover effect for navigation links */
+/* Hover state for navigation links */
 .navbar-nav .nav-link:hover {
-    color: var(--accent-color) !important;
+    color: var(--nav-active-color) !important;
 }
 
 /* Subtle striping for tables on dark backgrounds */
@@ -139,16 +161,15 @@ body {
  * the navigation bar or page header to pin it to the upper right corner.
  * The width is constrained to avoid dominating the layout.
  */
+/* CABW crest positioning in the navigation bar.  Constrain the width
+   and maintain aspect ratio to prevent cropping on various screen sizes.
+   A drop shadow helps the crest stand out against the dark header. */
 .header-logo {
     position: absolute;
-    /* Position the logo within the navigation bar and keep it fully visible */
     top: 8px;
     right: 10px;
-    width: 60px;
+    width: 65px;
     height: auto;
-    /* Apply a subtle drop shadow to help the logo stand out on the
-       coloured background. Without this effect the logo can appear
-       washed out when the surrounding colours are very similar. */
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
 }
 
@@ -204,6 +225,233 @@ body {
     background-color: rgba(255,255,255,0.15);
 }
 
+/*
+ * Landing page styles
+ *
+ * These styles are used exclusively on the home page to achieve the
+ * modern, institutional look shown in the provided design.  They
+ * coexist with the base styles for other pages without affecting
+ * existing layouts.
+ */
+
+/* Apply a neutral page background on the landing page */
+body.landing-page {
+    background-color: var(--page-bg);
+    color: var(--card-title-color);
+}
+
+/* Header navigation bar for the landing page */
+.navbar.landing {
+    background-color: var(--nav-bg) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    position: relative;
+    z-index: 100;
+}
+.navbar.landing .navbar-brand {
+    color: var(--nav-link-color) !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+.navbar.landing .navbar-nav .nav-link {
+    color: var(--nav-link-color) !important;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.2s ease;
+}
+.navbar.landing .navbar-nav .nav-link .nav-icon {
+    margin-right: 0.35rem;
+    font-size: 1rem;
+}
+/* Active nav item underline */
+.navbar.landing .navbar-nav .nav-item.active > .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--nav-active-color);
+    border-radius: 2px;
+}
+/* Hover state for navigation links */
+.navbar.landing .navbar-nav .nav-link:hover {
+    color: var(--nav-active-color) !important;
+}
+
+/* CABW logo positioning */
+.navbar.landing .cabw-logo {
+    width: 70px;
+    height: auto;
+    margin-left: 1rem;
+}
+
+/* Hero section on landing page */
+.hero.landing {
+    background: linear-gradient(180deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
+    position: relative;
+    padding: 6rem 0 5rem;
+    overflow: hidden;
+    color: var(--nav-link-color);
+}
+.hero.landing h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hero.landing h1 .highlight {
+    color: var(--nav-active-color);
+}
+.hero.landing .subtitle {
+    font-size: 1.1rem;
+    max-width: 640px;
+    margin: 0 auto;
+    color: #dde5f2;
+}
+
+/* Decorative divider below subtitle */
+.hero-divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--nav-active-color);
+    margin: 2rem auto;
+    border-radius: 2px;
+}
+
+/* Decorative aircraft icons for landing hero */
+.hero.landing .aircraft-icon {
+    position: absolute;
+    opacity: 0.06;
+    color: var(--nav-link-color);
+    pointer-events: none;
+    user-select: none;
+}
+.hero.landing .aircraft-gripen {
+    left: -15%;
+    top: 40%;
+    font-size: 18rem;
+    transform: rotate(-10deg);
+}
+.hero.landing .aircraft-h60 {
+    left: 50%;
+    top: -10%;
+    font-size: 14rem;
+    transform: translateX(-50%) rotate(5deg);
+}
+.hero.landing .aircraft-kc {
+    right: -15%;
+    top: 50%;
+    font-size: 20rem;
+    transform: rotate(10deg);
+}
+/* Adjust aircraft sizes for medium devices */
+@media (max-width: 992px) {
+    .hero.landing .aircraft-gripen {
+        font-size: 14rem;
+        left: -20%;
+    }
+    .hero.landing .aircraft-h60 {
+        font-size: 12rem;
+    }
+    .hero.landing .aircraft-kc {
+        font-size: 18rem;
+        right: -20%;
+    }
+}
+@media (max-width: 768px) {
+    .hero.landing {
+        padding: 4rem 0 3rem;
+    }
+    .hero.landing h1 {
+        font-size: 2.5rem;
+    }
+    .hero.landing .aircraft-gripen {
+        font-size: 10rem;
+        left: -30%;
+    }
+    .hero.landing .aircraft-h60 {
+        font-size: 8rem;
+    }
+    .hero.landing .aircraft-kc {
+        font-size: 14rem;
+        right: -30%;
+    }
+}
+
+/* Cards section for landing page */
+.cards-section {
+    background-color: var(--page-bg);
+    padding: 4rem 0 5rem;
+}
+.info-card {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 2rem 1.5rem 2.5rem;
+    height: 100%;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.info-card .icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #eef2f8;
+    color: var(--nav-active-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+}
+.info-card h3 {
+    color: var(--card-title-color);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+.info-card h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--nav-active-color);
+    margin: 0.5rem auto;
+    border-radius: 2px;
+}
+.info-card p {
+    color: var(--card-desc-color);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+.btn-panel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+.btn-panel:hover {
+    background-color: #001a3a;
+}
+.btn-panel i {
+    color: var(--button-icon-color);
+}
+
 /* Adjust the alternating row colour to a slightly lighter shade so
    zebra striping is visible even on dark backgrounds. */
 .table-striped tbody tr:nth-of-type(odd) {
@@ -235,17 +483,27 @@ body {
     padding: 8rem 0 5rem;
     text-align: center;
     position: relative;
-    /* Use both a gradient and a background image.  The gradient darkens
-       the image so the text remains readable regardless of the
-       underlying artwork.  The image itself is defined in the markup as
-       a separate file in the images folder. */
-    /* Use only a rich gradient for the hero background.  The image previously
-       used introduced unwanted interface artefacts; the gradient provides a
-       clean, adjustable backdrop. */
-    background: linear-gradient(rgba(5, 30, 68, 0.85), rgba(2, 18, 44, 0.85));
+    /* Apply a smooth gradient as the base hero background.  The overlay
+       defined in the ::before pseudo element darkens the backdrop
+       further to improve text legibility. */
+    background: linear-gradient(to bottom, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
     overflow: hidden;
     background-size: cover;
     background-position: center;
+}
+
+/* Dark overlay on the hero to ensure readable contrast for text over
+   the gradient background.  Use a pseudo-element so that the overlay
+   does not interfere with positioning of child elements. */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--hero-overlay);
+    z-index: 1;
 }
 
 /*
@@ -283,10 +541,11 @@ body {
  * selection are disabled to prevent interference with page layout. */
 .hero .aircraft-icon {
     position: absolute;
-    opacity: 0.07;
+    opacity: 0.08;
     color: #ffffff;
     pointer-events: none;
     user-select: none;
+    z-index: 0;
 }
 
 /* Position specific aircraft icons.  Adjust the font sizes and
