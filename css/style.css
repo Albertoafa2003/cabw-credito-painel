@@ -1,5 +1,16 @@
 
-    body { background-color: #f8f9fa; }
+/*
+ * Adjust the overall page appearance.  The default neutral background used by
+ * Bootstrap is overridden so the entire application has a blue backdrop
+ * consistent with the institutional colours requested.  Setting a body
+ * background colour here ensures all pages share the same look.  If you
+ * adjust this value, pick a colour that provides enough contrast for
+ * readability.
+ */
+body {
+    background-color: #0d6efd; /* Bootstrap primary blue */
+    color: #ffffff;           /* White text for contrast on the blue background */
+}
     h1, h2 { margin-top: 1rem; margin-bottom: 1rem; }
     .card { min-height: 140px; }
     .card-text { font-size: 1.1rem; }
@@ -7,4 +18,17 @@
         background-color: #007bff;
         color: white;
     }
+
+/*
+ * Logo positioning.  The following class can be applied to an image in
+ * the navigation bar or page header to pin it to the upper right corner.
+ * The width is constrained to avoid dominating the layout.
+ */
+.header-logo {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    width: 80px;
+    height: auto;
+}
     
