@@ -84,5 +84,30 @@ body {
     right: 10px;
     width: 80px;
     height: auto;
+    /* Apply a subtle drop shadow to help the logo stand out on the
+       coloured background. Without this effect the logo can appear
+       washed out when the surrounding colours are very similar. */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+}
+
+/* Ensure that tables are legible on the dark gradient background.  By
+   default Bootstrap uses dark text which disappears against the blue
+   backdrop.  Explicitly set the text colour for table headers and
+   body cells to the same off‑white used throughout the interface. */
+.table,
+.table th,
+.table td {
+    color: #f8f9fa !important;
+}
+
+/* Lighten the header rows for better separation on dark backgrounds. */
+.table thead th {
+    background-color: rgba(255,255,255,0.15);
+}
+
+/* Adjust the alternating row colour to a slightly lighter shade so
+   zebra striping is visible even on dark backgrounds. */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255,255,255,0.07);
 }
     
