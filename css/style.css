@@ -2,6 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
 /*
+ * Colour variables for consistent theming across the site.  Adjust these values
+ * to quickly adapt the visual palette.  The accent colour is used for
+ * highlights and icons, while the primary background colours define the
+ * dark blue gradients seen throughout the interface.
+ */
+:root {
+    --primary-bg: #051e44;
+    --primary-bg-darker: #02122c;
+    --accent-color: #EFC34A;
+    --text-color: #ffffff;
+}
+
+/*
  * Adjust the overall page appearance.  The default neutral background used by
  * Bootstrap is overridden so the entire application has a blue backdrop
  * consistent with the institutional colours requested.  Setting a body
@@ -10,10 +23,10 @@
  * readability.
  */
 body {
-    /* Apply a modern gradient background and a clean sans-serif font.  The colours transition
-       from the corporate blue to a darker shade to add depth. */
-    background: linear-gradient(180deg, #0d6efd 0%, #002a72 100%);
-    color: #f8f9fa;
+    /* Apply a darker gradient background using the primary colour variables.  This
+       anchors the page in a deep navy tone reminiscent of the reference design. */
+    background: linear-gradient(180deg, var(--primary-bg) 0%, var(--primary-bg-darker) 100%);
+    color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
     margin: 0;
@@ -47,19 +60,63 @@ body {
         color: white;
     }
 
-/* Soften the navbar by making it translucent.  The backdrop filter helps it
-   stand out without a solid block of colour. */
+/*
+ * Navigation bar styling
+ *
+ * The navbar is anchored with a solid dark background and subtle shadow.  Icons
+ * accompany each navigation label and separators are drawn between menu
+ * entries.  The active item receives a gold accent bar underneath.
+ */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.2) !important;
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    background-color: var(--primary-bg) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    position: relative;
 }
-.navbar-brand, .nav-link {
-    color: #ffffff !important;
+.navbar-brand {
+    color: var(--text-color) !important;
     font-weight: 600;
 }
+.navbar-nav .nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.navbar-nav .nav-link .nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.4rem;
+    filter: brightness(1.2);
+}
+/* Vertical separators between navigation items */
+.navbar-nav .nav-item:not(:last-child) > .nav-link::before {
+    content: '';
+    position: absolute;
+    right: -0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 18px;
+    background-color: rgba(255,255,255,0.2);
+}
+/* Highlight the active navigation item with a gold bar at the bottom */
+.navbar-nav .nav-item.active > .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+/* Hover effect for navigation links */
 .navbar-nav .nav-link:hover {
-    color: #e2e6ea !important;
+    color: var(--accent-color) !important;
 }
 
 /* Subtle striping for tables on dark backgrounds */
@@ -146,5 +203,158 @@ body {
    zebra striping is visible even on dark backgrounds. */
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(255,255,255,0.07);
+}
+
+/*
+ * Hero section styling for the home page
+ *
+ * The hero area introduces the portal and provides descriptive text.  A
+ * prominent heading with an accent-coloured word and an optional icon
+ * reinforce the corporate identity.  Paragraph text is kept legible with
+ * softened colours.
+ */
+/*
+ * Hero section styling
+ *
+ * The hero area sits at the top of the home page and conveys the primary
+ * purpose of the portal.  It features a full‑width background image
+ * overlaid with a dark gradient to ensure text legibility.  A large
+ * heading calls attention to the page title with an accent‑coloured word,
+ * and a decorative circular icon echoes the accent colour.  The
+ * supporting subtitle remains centred on the page and constrained in
+ * width for optimum readability.  Padding has been increased to give
+ * the hero the same vertical proportions seen in the reference design.
+ */
+.hero {
+    /* Provide generous top and bottom padding to create breathing room */
+    padding: 8rem 0 5rem;
+    text-align: center;
+    position: relative;
+    /* Use both a gradient and a background image.  The gradient darkens
+       the image so the text remains readable regardless of the
+       underlying artwork.  The image itself is defined in the markup as
+       a separate file in the images folder. */
+    background: linear-gradient(rgba(5, 30, 68, 0.85), rgba(2, 18, 44, 0.85)),
+                url('../images/home-bg.png') center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/*
+ * The hero icon sits above the heading and reinforces the interactive
+ * nature of the portal.  It is styled as a circular badge with a gold
+ * border and uses Font Awesome icons internally.  The size and border
+ * width mirror the golden circle seen in the provided mockup.
+ */
+.hero .hero-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+}
+
+/* Size the main hero heading prominently and highlight the last word
+   using the accent colour.  Increase font weight to make the heading
+   stand out against the photographic background. */
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+.hero h1 .highlight {
+    color: var(--accent-color);
+}
+
+/* The supporting subtitle explains what the user should do on the page.
+   To maintain readability over the darker backdrop, use a slightly
+   brighter off‑white colour.  Limit the maximum width so that text
+   doesn’t span the entire screen on large monitors. */
+.hero .subtitle {
+    font-size: 1.1rem;
+    color: #d0d9e6;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/*
+ * Updated home block styling
+ *
+ * These blocks act as large call‑to‑action cards.  They employ a subtle
+ * glassy panel effect with a gold accent line beneath the heading and a
+ * circular arrow button at the bottom to indicate interactivity.
+ */
+.home-block {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem 1.5rem 3.5rem;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.home-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+
+.home-block .icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    filter: brightness(1.2);
+}
+
+.home-block h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.home-block h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 0.5rem auto;
+    border-radius: 2px;
+}
+
+.home-block p {
+    font-size: 0.9rem;
+    color: #c7d5ea;
+}
+
+.home-block .arrow-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.1);
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: background-color 0.2s;
+}
+
+.home-block:hover .arrow-button {
+    background-color: rgba(255,255,255,0.2);
 }
     

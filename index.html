@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Painel CABW - Página Principal</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <!-- Include Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pkPxmcYbBv0xiAnBWuoC8+z+L1nRdAN1n6HOywhQYIwa3Tjcj8i18V4CE83IJUVtVtu5y0E+X+3OlFt9db/fWg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="index.html">Painel CABW</a>
   <img src="cabw_logo.png" alt="CABW logo" class="header-logo">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,41 +19,55 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active"><a class="nav-link" href="index.html">Início</a></li>
-      <li class="nav-item"><a class="nav-link" href="credito.html">Crédito Disponível</a></li>
-      <li class="nav-item"><a class="nav-link" href="contratos.html">Contratos</a></li>
-      <li class="nav-item"><a class="nav-link" href="processos.html">Processos de Contratação</a></li>
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html"><img src="icons/home_icon.png" class="nav-icon" alt="">Início</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="credito.html"><img src="icons/credit_icon.png" class="nav-icon" alt="">Crédito Disponível</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contratos.html"><img src="icons/contract_icon.png" class="nav-icon" alt="">Contratos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="processos.html"><img src="icons/process_icon.png" class="nav-icon" alt="">Processos de Contratação</a>
+      </li>
     </ul>
   </div>
 </nav>
 
-<div class="container-fluid mt-4">
-  <h1>Página Principal</h1>
-  <p class="mb-4">Selecione uma das áreas abaixo para acessar os respectivos painéis de informações.</p>
-  <div class="row">
-    <div class="col-lg-4 col-md-6 mb-4">
-      <a href="credito.html" class="home-block d-block text-decoration-none">
-        <img src="icons/credit_icon.png" alt="Crédito Disponível">
-        <h3>Crédito Disponível</h3>
-        <p>Acompanhe o crédito disponível e sua evolução ao longo do exercício.</p>
-      </a>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4">
-      <a href="contratos.html" class="home-block d-block text-decoration-none">
-        <img src="icons/contract_icon.png" alt="Contratos">
-        <h3>Contratos</h3>
-        <p>Informações sobre contratos firmados, vigências e valores.</p>
-      </a>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4">
-      <a href="processos.html" class="home-block d-block text-decoration-none">
-        <img src="icons/process_icon.png" alt="Processos de Contratação">
-        <h3>Processos de Contratação</h3>
-        <p>Avalie o andamento dos processos de contratação em curso.</p>
-      </a>
+<header class="hero text-center">
+  <div class="hero-content container">
+    <div class="hero-icon"><i class="fa-solid fa-angle-down"></i></div>
+    <h1>Página <span class="highlight">Principal</span></h1>
+    <p class="subtitle">Selecione uma das áreas abaixo para acessar os respectivos painéis de informações.</p>
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="credito.html" class="home-block">
+          <div class="icon"><img src="icons/credit_icon.png" alt="Crédito Disponível"></div>
+          <h3>Crédito Disponível</h3>
+          <p>Acompanhe o crédito disponível e sua evolução ao longo do exercício.</p>
+          <div class="arrow-button"><i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="contratos.html" class="home-block">
+          <div class="icon"><img src="icons/contract_icon.png" alt="Contratos"></div>
+          <h3>Contratos</h3>
+          <p>Informações sobre contratos firmados, vigências e valores.</p>
+          <div class="arrow-button"><i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="processos.html" class="home-block">
+          <div class="icon"><img src="icons/process_icon.png" alt="Processos de Contratação"></div>
+          <h3>Processos de Contratação</h3>
+          <p>Avalie o andamento dos processos de contratação em curso.</p>
+          <div class="arrow-button"><i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+      </div>
     </div>
   </div>
-</div>
+</header>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
