@@ -90,6 +90,43 @@ body {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
 }
 
+/*
+ * Home page block styling
+ * These rules define the appearance of the large clickable cards on the
+ * main dashboard page. They mirror the translucent glass effect used
+ * throughout the application while adding subtle hover animations.
+ */
+.home-block {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    min-height: 250px;
+    text-align: center;
+    padding: 2rem 1rem;
+    transition: transform 0.2s ease;
+}
+.home-block:hover {
+    transform: translateY(-5px);
+}
+.home-block img {
+    max-width: 90px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+.home-block h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+.home-block p {
+    font-size: 1rem;
+    color: #f8f9fa;
+    margin-bottom: 0;
+}
+
 /* Ensure that tables are legible on the dark gradient background.  By
    default Bootstrap uses dark text which disappears against the blue
    backdrop.  Explicitly set the text colour for table headers and
