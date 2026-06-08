@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 /*
  * Adjust the overall page appearance.  The default neutral background used by
  * Bootstrap is overridden so the entire application has a blue backdrop
@@ -8,16 +10,68 @@
  * readability.
  */
 body {
-    background-color: #0d6efd; /* Bootstrap primary blue */
-    color: #ffffff;           /* White text for contrast on the blue background */
+    /* Apply a modern gradient background and a clean sans-serif font.  The colours transition
+       from the corporate blue to a darker shade to add depth. */
+    background: linear-gradient(180deg, #0d6efd 0%, #002a72 100%);
+    color: #f8f9fa;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    margin: 0;
 }
     h1, h2 { margin-top: 1rem; margin-bottom: 1rem; }
-    .card { min-height: 140px; }
+.card { min-height: 140px; }
+
+/* Modern card styling with a translucent glass effect.  The border and
+   backdrop filter give a sense of depth on the coloured background. */
+.card {
+    background-color: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    color: #ffffff;
+    min-height: 150px;
+    margin-bottom: 1rem;
+}
+.card .card-title {
+    color: #ffffff;
+    font-weight: 600;
+}
+.card .card-text {
+    color: #f8f9fa;
+    font-size: 1.15rem;
+}
     .card-text { font-size: 1.1rem; }
     table.dataTable thead th {
         background-color: #007bff;
         color: white;
     }
+
+/* Soften the navbar by making it translucent.  The backdrop filter helps it
+   stand out without a solid block of colour. */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+.navbar-nav .nav-link:hover {
+    color: #e2e6ea !important;
+}
+
+/* Subtle striping for tables on dark backgrounds */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* Add padding to containers to give elements breathing room */
+.container-fluid {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
 
 /*
  * Logo positioning.  The following class can be applied to an image in
