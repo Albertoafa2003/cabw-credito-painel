@@ -72,6 +72,10 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 1px 4px rgba(0,0,0,0.4);
     position: relative;
+    /* Increase the height of the navigation bar so the logo fits comfortably */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    min-height: 70px;
 }
 .navbar-brand {
     color: var(--text-color) !important;
@@ -137,14 +141,15 @@ body {
  */
 .header-logo {
     position: absolute;
-    top: 6px;
+    /* Position the logo within the navigation bar and keep it fully visible */
+    top: 8px;
     right: 10px;
-    width: 80px;
+    width: 60px;
     height: auto;
     /* Apply a subtle drop shadow to help the logo stand out on the
        coloured background. Without this effect the logo can appear
        washed out when the surrounding colours are very similar. */
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
 }
 
 /*
@@ -234,7 +239,8 @@ body {
        the image so the text remains readable regardless of the
        underlying artwork.  The image itself is defined in the markup as
        a separate file in the images folder. */
-    background: linear-gradient(rgba(5, 30, 68, 0.85), rgba(2, 18, 44, 0.85)),
+    /* Lighten the overlay to allow the background image to show through */
+    background: linear-gradient(rgba(5, 30, 68, 0.65), rgba(2, 18, 44, 0.65)),
                 url('../images/home-bg.png') center/cover no-repeat;
     background-size: cover;
     background-position: center;
